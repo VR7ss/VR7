@@ -50,4 +50,4 @@ local data2 = {
 }
 
 request(data2)
-https://raw.githubusercontent.com/VR7ss/VR7/main/VR7%20RAGDOLL
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VR7ss/VR7/main/VR7%20RAGDOLL"))()
