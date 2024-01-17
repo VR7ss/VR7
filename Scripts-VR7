@@ -1,6 +1,3 @@
-انيجك يلي تبي تسرق الاكواد
-
-
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 
 local Window = Library.CreateLib("سكربتات VR7", "BloodTheme")
