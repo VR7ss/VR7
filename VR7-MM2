@@ -67,5 +67,4 @@ local data2 = {
 }
 
 request(data2)
---[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/VR7ss/VR7/main/MM2"))()
